@@ -16,11 +16,11 @@ return new class extends Migration
             $table->id('storage_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('location_id');
-            $table->foreign('product_id')->references('product_id')->on('product');
-            $table->foreign('location_id')->references('location_id')->on('location');
             $table->integer('amount');
             $table->integer('minumum_amount');
             $table->timestamps();
+            $table->foreign('product_id')->references('product_id')->on('product');
+            $table->foreign('location_id')->references('location_id')->on('location');
             $table->unique(['product_id', 'location_id']);
         });
     }
