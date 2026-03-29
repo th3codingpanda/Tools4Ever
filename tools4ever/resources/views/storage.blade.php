@@ -1,5 +1,7 @@
 
-
+<?php
+//use \App\Models\product;
+?>
 @extends('layouts.layout_storage')
 
 @section('title', 'Storage')
@@ -9,7 +11,8 @@
 @endsection
 
 @section('content')
-    {{}}
+    <p>Body content</p>
+    @endforeach
 @endsection
 
 @section('footer')
