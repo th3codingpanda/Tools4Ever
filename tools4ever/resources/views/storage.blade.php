@@ -1,6 +1,8 @@
 
 <?php
-//use \App\Models\product;
+use Illuminate\Support\Facades\DB;
+use App\Models\product;
+
 ?>
 @extends('layouts.layout_storage')
 
@@ -12,7 +14,13 @@
 
 @section('content')
     <p>Body content</p>
-    @endforeach
+    <?php
+    foreach (product::all() as $product) {
+    echo $product->name;
+}
+    
+    ?>
+    
 @endsection
 
 @section('footer')
