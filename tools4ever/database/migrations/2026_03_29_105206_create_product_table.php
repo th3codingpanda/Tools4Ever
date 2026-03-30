@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name',length: 50)->unique();
             $table->string('type',length: 50);
             $table->string('manufacturer',length: 70);
-            $table->decimal('buyprice',6,2);
-            $table->decimal('sellprice',6,2);
+            $table->decimal('buy_price',6,2);
+            $table->decimal('sell_price',6,2);
         });
         
     }

@@ -1,11 +1,29 @@
-.sticky{
-    position: sticky;
-    z-index: 10;
-    padding: 10px;
-    top: 0px;
+.storage_display table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+  
 }
-  .flex{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+
+.storage_display td,
+.storage_display th {
+  border: 2px solid #000000;
+  padding: 8px;
+}
+
+.storage_display tr:nth-child(even) {
+  background-color: #dccccc;
+}
+
+
+.storage_display tr:hover {
+  background-color: #d4c1f0;
+}
+
+.storage_display th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #8107b5;
+  color: white;
 }

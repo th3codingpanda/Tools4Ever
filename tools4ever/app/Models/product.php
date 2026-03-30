@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\Attributes\Table;
 class product extends Model
 {
     
-    protected $fillable = ['name', 'type','manufacturer','buyprice','sellprice'];
+    protected $fillable = ['name', 'type','manufacturer','buy_price','sell_price'];
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('location_id');
             $table->integer('amount');
-            $table->integer('minumum_amount');
+            $table->integer('minimum_amount');
             $table->timestamps();
             $table->foreign('product_id')->references('product_id')->on('product');
             $table->foreign('location_id')->references('location_id')->on('location');
