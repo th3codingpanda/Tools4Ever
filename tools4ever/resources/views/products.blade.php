@@ -36,7 +36,7 @@ use App\Models\product;
      <td>€{{ $product['sell_price'] }}</td>
      <td><button onclick='test()'> Edit</button></td>
 
-      <td><button onclick='delete_product({{$product["product_id"]}},{{json_encode($product["name"])}},{{json_encode(DB::select("select * from storage where product_id = $product[product_id]"))}} )'>Delete</button></td>
+           <td><button onclick='delete_product({{$product["product_id"]}},{{json_encode($product["name"])}},{{json_encode(DB::table("storage")->join("product", "product.product_id", "=", "storage.product_id")->join("location", "location.location_id", "=", "storage.location_id")->select("storage.storage_id","location.name as location_name")->where("storage.product_id" ,"=", $product["product_id"])->get())}})'>Delete</button></td>
     </tr>
 
   @endforeach
