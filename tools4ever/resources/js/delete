@@ -1,0 +1,33 @@
+window.delete_product = function(Id,Name,params){
+    let warning_message= "";
+    if(params != ""){
+        warning_message += "This item is linked to:\n"
+    for (let i=0; i<params.length; i++) {
+    if(i + 1 != params.length){
+        warning_message += "Storage id: " +params[i].storage_id +"\n"
+        warning_message += "At location: " +params[i].location_id +"\n"
+        warning_message += "And\n"
+    }
+    else{
+        warning_message += "Storage id: " +params[i].storage_id +"\n"
+        warning_message += "At location: " +params[i].location_id +"\n"
+    }
+    }
+  }
+    if(confirm(warning_message+"Are you still sure you want to delete this product? " +"\n" + Name + "\nId="+ Id )){
+        if(params == ""){
+            //delete
+        }
+        else{
+            if(confirm("Are you really sure you want to delete this? \nDeleting this product will also delete the linked items in storage")){
+                //delete linked items and this product
+            }
+            else{
+                alert("Canceled deletion")
+            }
+        }
+    }
+    else{
+        alert("Canceled deletion")
+    }
+}

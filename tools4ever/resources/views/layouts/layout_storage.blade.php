@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        @vite(['resources/css/layout_storage.css'])
+        @vite(['resources/css/layout_storage.css','resources/js/app.js'])
     </head>
     <body>
         @section('header')
