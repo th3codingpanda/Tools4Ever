@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/storage', function () {
     return view('storage');
 });
+Route::get('/products', function () {
+    return view('products');
+});
