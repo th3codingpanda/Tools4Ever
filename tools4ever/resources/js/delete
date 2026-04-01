@@ -1,33 +1,41 @@
-window.delete_product = function(Id,Name,params){
+window.delete_product = function(id,name,linked_items){
     let warning_message= "";
-    if(params != ""){
+    if(linked_items != ""){
         warning_message += "This item is linked to a storage at:\n";
-    for (let i=0; i<params.length; i++) {
-    if(i + 1 != params.length){
-        warning_message += "Storage id: " +params[i].storage_id +"\n";
-        warning_message += "At location: " +params[i].location_name +"\n";
+    for (let i=0; i<linked_items.length; i++) {
+        warning_message += "Storage id: " +linked_items[i].storage_id +"\n";
+        warning_message += "At location: " +linked_items[i].location_name +"\n";
+    if(i + 1 != linked_items.length){
         warning_message += "And\n";
-    }
-    else{
-        warning_message += "Storage id: " +params[i].storage_id +"\n";
-        warning_message += "At location: " +params[i].location_name +"\n";
     }
     }
   }
-    if(confirm(warning_message+"Are you sure you want to delete this product? " +"\n" + Name + " At id="+ Id )){
-        if(params == ""){
+    if(confirm(warning_message+"Are you sure you want to delete this product? " +"\n" + name + " At id="+ id )){
+        if(linked_items == ""){
             //delete
+            return true; 
         }
         else{
             if(confirm("Are you really sure you want to delete this? \nDeleting this product will also delete the linked items in storage")){
                 //delete linked items and this product
+                return true; 
             }
             else{
                 alert("Canceled deletion");
+                return false;   
             }
         }
     }
     else{
         alert("Canceled deletion");
+        return false;   
     }
+}
+
+window.mySubmitFunction = function(e,id,name,linked_items) {
+  e.preventDefault();
+  if(delete_product(id,name,linked_items)){
+
+  document.getElementById(id).submit();
+  }
 }

@@ -34,9 +34,11 @@ use App\Models\product;
      <td>{{ $product['manufacturer']}}</td>
      <td>€{{$product['buy_price']  }}</td>
      <td>€{{ $product['sell_price'] }}</td>
-     <td><button onclick='test()'> Edit</button></td>
-
-           <td><button onclick='delete_product({{$product["product_id"]}},{{json_encode($product["name"])}},{{json_encode(DB::table("storage")->join("product", "product.product_id", "=", "storage.product_id")->join("location", "location.location_id", "=", "storage.location_id")->select("storage.storage_id","location.name as location_name")->where("storage.product_id" ,"=", $product["product_id"])->get())}})'>Delete</button></td>
+     <td><button onclick='test()'>Edit</button>
+<td>
+  <form id="{{$product->product_id}}" method="POST" style="margin: 0;" onsubmit='return mySubmitFunction(event,{{$product->product_id}},{{json_encode($product->name)}},{{json_encode(DB::table("storage")->join("product", "product.product_id", "=", "storage.product_id")->join("location", "location.location_id", "=", "storage.location_id")->select("storage.storage_id","location.name as location_name")->where("storage.product_id" ,"=", $product["product_id"])->get())}})'  action="product_delete/{{$product->product_id}}">
+     <button>Delete</button></td>
+         </form>
     </tr>
 
   @endforeach
