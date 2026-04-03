@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('manufacturer',length: 70);
             $table->decimal('buy_price',6,2);
             $table->decimal('sell_price',6,2);
+            $table->timestamps();
         });
         
     }

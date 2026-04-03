@@ -1,4 +1,4 @@
-window.delete_product = function(id,name,linked_items){
+window.delete_product = function(product_id,product_name,linked_items){
     let warning_message= "";
     if(linked_items != ""){
         warning_message += "This item is linked to a storage at:\n";
@@ -10,7 +10,7 @@ window.delete_product = function(id,name,linked_items){
     }
     }
   }
-    if(confirm(warning_message+"Are you sure you want to delete this product? " +"\n" + name + " At id="+ id )){
+    if(confirm(warning_message+"Are you sure you want to delete this product? " +"\n" + product_name + " At id="+ product_id )){
         if(linked_items == ""){
             //delete
             return true; 
@@ -32,10 +32,10 @@ window.delete_product = function(id,name,linked_items){
     }
 }
 
-window.mySubmitFunction = function(e,id,name,linked_items) {
-  e.preventDefault();
-  if(delete_product(id,name,linked_items)){
-
-  document.getElementById(id).submit();
+window.submit_delete_product = function(event,product_id,product_name,linked_items) {
+  event.preventDefault();
+  if(delete_product(product_id,product_name,linked_items)){
+  //document.getElementById(product_name).
+  document.getElementById(product_id).submit();
   }
 }
