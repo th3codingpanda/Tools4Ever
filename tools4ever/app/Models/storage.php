@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Attributes\Table;
 #[Table('storage', key: 'storage_id')]
 class storage extends Model
 {
-    protected $fillable = ['product_id', 'location_id','amount','minimum_amount'];
+    protected $fillable = ['product_id', 'location_id','amount','minimum_amount' ,'buy_price','sell_price'];
 }
