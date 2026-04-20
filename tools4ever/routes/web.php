@@ -17,6 +17,13 @@ Route::get('/storage', function () {
 Route::get('/products', function ( ) {
     return view('products');
 });
+Route::get('/order', function ( ) {
+    return view('order');
+});
+
+
+
+//product related
 Route::post('/product_create', [product_controller::class, 'create']);
 Route::post('/product_edit/{product}', [product_controller::class, 'edit']);
 Route::post('/product_delete/{product}', [product_controller::class, 'delete']);

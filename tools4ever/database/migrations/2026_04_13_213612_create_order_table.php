@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id('product_id');
-            $table->string('name',length: 50)->unique();
-            $table->string('type',length: 50);
-            $table->string('manufacturer',length: 70);
+        Schema::create('order', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
+            $table->time("deliver_time");
         });
-        
     }
 
     /**
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('order');
     }
 };

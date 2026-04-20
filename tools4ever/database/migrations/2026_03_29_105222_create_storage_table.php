@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id('storage_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('location_id');
+            $table->decimal('buy_price',6,2);
+            $table->decimal('sell_price',6,2);
             $table->integer('amount');
             $table->integer('minimum_amount');
             $table->timestamps();

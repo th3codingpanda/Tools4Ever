@@ -8,7 +8,7 @@
             <header class="">
                 <a href="products">products</a>
                 <a href="storage">storage</a>
-                <a href="storage">Order</a>
+                <a href="order">Order</a>
             </header>
         @show
  

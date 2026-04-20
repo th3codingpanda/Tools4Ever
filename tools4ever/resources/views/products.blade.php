@@ -21,12 +21,13 @@ use App\Models\product;
     </tr>
     <tr>
       <form method="POST" action="product_create">
-        <td><input type="text" minlength="1"></td>
-        <td><input type="text" minlength="1"></td>
-        <td><input type="text" minlength="1"></td>
+        <td><input type="text" name="name" ></td>
+        <td><input type="text" name="type"></td>
+        <td><input type="text" name="manufacturer" ></td>
         <td><button type="submit">create</button></td>
       </form>
     </tr>
+    </table>
 </div>
 <div class="storage_display">
       <table>
@@ -39,10 +40,10 @@ use App\Models\product;
       <th>Delete</th>
 
     </tr>
-
+    {{-- Displays all product information and allows for editing --}}
     @foreach ( product::all() as $product )
     <tr>
-      <form id="edit_{{$product->product_id}}" method="POST" onsubmit="return edit_product_mode(event,'edit_{{$product->product_id}}')" action="product_edit/{{ $product->product_id }}">
+    <form id="edit_{{$product->product_id}}" method="POST" onsubmit="return edit_product_mode(event,'edit_{{$product->product_id}}')" action="product_edit/{{ $product->product_id }}">
      <td>{{  $product->product_id}}</td>
      <td id="edit_{{$product->product_id}}_name_text">{{  $product->name}} </td>
      <td id="edit_{{$product->product_id}}_name_input" class="hide"><input type="text" value="{{$product->name}}" name="name"></td>
@@ -52,8 +53,10 @@ use App\Models\product;
      <td id="edit_{{$product->product_id}}_manufacturer_input" class="hide"><input type="text" value="{{$product->manufacturer}}" name="manufacturer"></td>
      <td id="edit_{{$product->product_id}}_edit_button"><button>Edit</button></td>
      <td id="edit_{{$product->product_id}}_confirm_button" class="hide"><button  onclick="confirm_edit('edit_{{$product->product_id}}')">Confirm</button></td>
-     </form>
+    </form>
+    {{-- allows for deletion of products --}}
      <td>
+      
       <?php
         $linked_items = DB::table("storage")->join("product", "product.product_id", "=", "storage.product_id")->join("location", "location.location_id", "=", "storage.location_id")->select("storage.storage_id","location.name as location_name")->where("storage.product_id" ,"=", $product["product_id"])->get();
       ?>

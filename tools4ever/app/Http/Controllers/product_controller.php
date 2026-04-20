@@ -12,9 +12,20 @@ class product_controller extends Controller
 {
        public function create(Request $request)
     {  
+        $validator = Validator::make($request->all(), [
+            'name' => ['required','min:1','max:50', Rule::unique('product')],
+            'type' => 'required|min:1|max:50',
+            'manufacturer' => 'required|min:1|max:70',
+        ]);
+        if ($validator->fails()) {
+                    return redirect('products')
+                        ->withErrors($validator)
+                        ->withInput();
+                    //TODO:Make this return actual errors
+        }
         product::create(['name'=>$request->input("name"),"type"=>$request->input("type"),"manufacturer"=>$request->input("manufacturer"),['timestamps' => false]]);
         return redirect("products");
-     }
+    }
     public function edit(product $product,Request $request)
     {   
     $validator = Validator::make($request->all(), [
@@ -22,11 +33,12 @@ class product_controller extends Controller
         'type' => 'required|min:1|max:50',
         'manufacturer' => 'required|min:1|max:70',
     ]);
-    //TODO:Make this return actual errors
+    
     if ($validator->fails()) {
         return redirect('products')
                     ->withErrors($validator)
                     ->withInput();
+                    //TODO:Make this return actual errors
     }
 
              $product->updateOrFail(["name"=>$request->input("name"),"type"=>$request->input("type"),"manufacturer"=>$request->input("manufacturer"),['timestamps' => false]]);        

@@ -1,6 +1,8 @@
 
 <?php
 use Illuminate\Support\Facades\DB;
+use App\Models\product;
+use App\Models\location;
 ?>
 @extends('layouts.layout_storage')
 
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 @section('content')
 <div class="storage_display">
-      <table >
+      <table>
     <tr>
       <th>Storage Id</th>
       <th>Product Name</th>
@@ -31,25 +33,21 @@ use Illuminate\Support\Facades\DB;
     ->join('location', 'location.location_id', '=', 'storage.location_id')
     ->select('storage.*', 'product.name as product_name', 'product.*','location.name as location_name','location.*')
      ->orderBy('storage.storage_id')
-    ->get();
-    foreach ($full_storage as $product) {
-    echo "<tr>";
-
-    //echo "<td> <a href='details.php?id=" . $product['name'] . "'>" . $product['name'] . "</a></td>";
-      echo "<td>" . $product->storage_id . "</td>";
-      echo "<td>" . $product->product_name . "</td>";
-      echo "<td>" . $product->type ."</td>";
-      echo "<td>" . $product->manufacturer . "</td>";
-      echo "<td>"  .$product->location_name . "</td>";
-      echo "<td>" ."€" . $product->buy_price . "</td>";
-      echo "<td>". "€" .$product->sell_price . "</td>";
-      echo "<td>" .$product->amount . "</td>";
-      echo "<td>".$product->minimum_amount . "</td>";
-      echo "</tr>";
-}
-    echo "</table>";
-    
-    ?>
+    ->get(); ?>
+    @foreach ($full_storage as $product) 
+    <tr>
+      <td> {{$product->storage_id}}</td>
+       <td>{{$product->product_name}}</td>
+       <td>{{$product->type}}</td>
+       <td>{{$product->manufacturer}}</td>
+       <td>{{$product->location_name}}</td>
+       <td>€{{$product->buy_price}}</td>
+       <td>€{{$product->sell_price}}</td>
+       <td>{{$product->amount}}</td>
+       <td>{{$product->minimum_amount}}</td>
+       </tr>
+@endforeach
+     </table>
     </div>
     
 @endsection

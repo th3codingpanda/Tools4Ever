@@ -48,6 +48,7 @@ public function handle()
         '2026_03_29_105206_create_product_table.php',
         '2026_03_29_105233_create_location_table.php',
         '2026_03_29_105222_create_storage_table.php',
+        '2026_04_13_213612_create_order_table.php',
     ];
 
     foreach ($migrations as $migration) {
