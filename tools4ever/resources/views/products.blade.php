@@ -20,10 +20,10 @@ use App\Models\product;
       <th>Create</th>
     </tr>
     <tr>
-      <form method="POST" action="product_create">
-        <td><input type="text" name="name" ></td>
-        <td><input type="text" name="type"></td>
-        <td><input type="text" name="manufacturer" ></td>
+      <form method="POST" action="product_create" autocomplete="off" >
+        <td><input type="text" name="name" minlength="1" maxlength="50"  required="required"></td>
+        <td><input type="text" name="type" minlength="1" maxlength="50"  required="required"></td>
+        <td><input type="text" name="manufacturer"minlength="1" maxlength="70"  required="required"></td>
         <td><button type="submit">create</button></td>
       </form>
     </tr>
@@ -43,7 +43,7 @@ use App\Models\product;
     {{-- Displays all product information and allows for editing --}}
     @foreach ( product::all() as $product )
     <tr>
-    <form id="edit_{{$product->product_id}}" method="POST" onsubmit="return edit_product_mode(event,'edit_{{$product->product_id}}')" action="product_edit/{{ $product->product_id }}">
+    <form id="edit_{{$product->product_id}}" method="POST" onsubmit="return edit_product_mode(event,'edit_{{$product->product_id}}')" action="product_edit/{{ $product->product_id }}" autocomplete="off">
      <td>{{  $product->product_id}}</td>
      <td id="edit_{{$product->product_id}}_name_text">{{  $product->name}} </td>
      <td id="edit_{{$product->product_id}}_name_input" class="hide"><input type="text" value="{{$product->name}}" name="name"></td>

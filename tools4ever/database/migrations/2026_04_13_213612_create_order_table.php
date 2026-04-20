@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->time("deliver_time");
+            $table->time("delivery_time");
         });
     }
 
