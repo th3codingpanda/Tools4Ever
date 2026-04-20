@@ -1,3 +1,12 @@
+
+window.submit_delete_product = function(event,product_id,product_name,linked_items) {
+  event.preventDefault();
+  if(delete_product(product_id,product_name,linked_items)){
+  document.getElementById(product_id).submit();
+  }
+}
+
+
 window.delete_product = function(product_id,product_name,linked_items){
     let warning_message= "";
     if(linked_items != ""){
@@ -32,10 +41,43 @@ window.delete_product = function(product_id,product_name,linked_items){
     }
 }
 
-window.submit_delete_product = function(event,product_id,product_name,linked_items) {
+
+
+
+
+
+
+
+window.submit_delete_location = function(event,location_id,location_name,linked_count) {
   event.preventDefault();
-  if(delete_product(product_id,product_name,linked_items)){
-  //document.getElementById(product_name).
-  document.getElementById(product_id).submit();
+  if(delete_location(location_id,location_name,linked_count)){
+  document.getElementById(location_id).submit();
   }
+}
+
+window.delete_location = function(location_id,location_name,linked_count){
+    let warning_message= "";
+    if(linked_count != 0){
+        warning_message += "This item is linked to " + linked_count + " Items in storage\n";
+    }
+    if(confirm(warning_message+"Are you sure you want to delete this location?   " +"\n" + "Name: "+ location_name + " At id="+ location_id )){
+        if(linked_count == 0){
+            //delete
+            return true; 
+        }
+        else{
+            if(confirm("Are you really sure you want to delete this? \nDeleting this location will also delete the linked items in storage")){
+                //delete linked items and this product
+                return true; 
+            }
+            else{
+                alert("Canceled deletion");
+                return false;   
+            }
+        }
+    }
+    else{
+        alert("Canceled deletion");
+        return false;   
+    }
 }

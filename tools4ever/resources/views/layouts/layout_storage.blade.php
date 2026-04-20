@@ -9,6 +9,7 @@
                 <a href="products">products</a>
                 <a href="storage">storage</a>
                 <a href="order">Order</a>
+                <a href="location">Location</a>
             </header>
         @show
  
